@@ -1,0 +1,97 @@
+# read_site_info
+
+Easily create a plot of Site, Core, Section, Sample information
+
+In this script, we create an overview of IODP site information, with core
+recovery, hole, section information, as well as what samples have been
+requested.
+
+![example](https://github.com/japhir/iodp-site-info/blob/master/example.png?raw=TRUE)
+
+## Download the necessary files
+
+Go to the IODP-core repostory
+[web-interface](http://dis.bremen.wdc-mare.org/BCRDIS/) to download the ASCII
+`.txt` file of the core, section, and samples of interest. Place the files
+inside their respective folders ("cores", "sections", and "samples") in the
+project folder (e.g. "208-1264") in your base directory
+(e.g. "data"). It doesn't matter what you name the `.txt` files.
+
+Also take a look at the [Core-section
+summary](http://web.iodp.tamu.edu/janusweb/coring_summaries/coresumm.shtml) to
+figure out why there are certain holes in the sampling scheme. Unfortunately,
+you have to copy/paste this into a file. Make sure to set the options to `.csv`
+and save it into the project folder as `coresumm.csv`.
+
+### Example setup
+
+You should have the below directory structure:
+
+```
+iodp_read_info
+├── data                   # base
+│   ├── 105-647            # project 1
+│   │   ├── cores
+│   │   │   └── 647_all_cores.txt
+│   │   ├── coresumm.csv
+│   │   ├── samples
+│   │   │   └── 647_all_samples.txt
+│   │   └── sections
+│   │       └── 647_all_sections.txt
+│   ├── 208-1264           # project 2
+│   │   ├── cores
+│   │   │   ├── 208-1264A_cores.txt
+│   │   │   ├── 208-1264B_cores.txt
+│   │   │   └── 208-1264C_cores.txt
+│   │   ├── coresumm.csv
+│   │   ├── samples
+│   │   │   ├── 208-1264A_samples.txt
+│   │   │   ├── 208-1264B_samples.txt
+│   │   │   └── 208-1264C_samples.txt
+│   │   └── sections
+│   │       ├── 208-1264A_sections.txt
+│   │       ├── 208-1264B_sections.txt
+│   │       └── 208-1264C_sections.txt
+├── imgs
+│   ├── 1264_overview.pdf
+│   ├── 647_29:31.pdf
+│   └── 647_overview.pdf
+├── out
+└── scripts
+    └── read_site_info.R
+```
+
+Great! Now we can easily get an overview of what samples are available!
+
+## Dependencies
+
+The script uses ggplot2, dplyr, readr from the [tidyverse](https://www.tidyverse.org/).
+
+If any of them is missing/not working, install the package with,
+e.g. `install.packages("ggplot2")`.
+
+## Example application
+
+Here we apply the functions on the data from Walvis Ridge, IODP Leg 208, Site
+1264.
+
+``` r
+source("scripts/read_site_info.R")
+s1264 <- read_site_info()
+s1264 %>% plot_site_info() %>%
+  ggsave("imgs/1264_overview.pdf", .,
+    width = 5, height = 10)
+```
+
+And now to the Newfoundland, with a nice zoom on the region of interest:
+
+``` r
+s647 <- read_site_info("105-647")
+s647 %>%
+  plot_site_info() %>%
+  ggsave("imgs/647_overview.pdf", ., width = 5, height = 10)
+s647 %>%
+  plot_site_info() + coord_cartesian(ylim = c(270, 300))
+ggsave("imgs/647_29:31.pdf", width = 5, height = 10)
+ggsave("example.png", width = 5, height = 10)
+```

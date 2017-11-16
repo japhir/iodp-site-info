@@ -1,0 +1,4 @@
+XDIS-ASCII-Export of ASP.webview_cores_view_aspx, created on 11/16/2017 1:19:52 PM, SEPARATOR:TAB
+
+EXPEDITION	SITE	HOLE	CORE	CORE_TYPE	TOP_DEPTH	DRILLED_LENGTH	BOTTOM_DEPTH	MCD_OFFSET	CORE_RECOVERY	CORE_RECOVERY_PC	CORE_ONDECK	ORIENTED	LAST_SECTION	CORE_CATCHER	ANALYST	IGSN	REMARKS	
+208	1264	C	1	H	0	3	3	0.1	3	100	4/8/2003 12:00:00 AM	&nbsp;	3	yes	na	&nbsp;	                                                                                                                                                                                                                                                               	

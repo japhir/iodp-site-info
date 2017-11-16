@@ -1,0 +1,6 @@
+XDIS-ASCII-Export of ASP.webview_sections_view_aspx, created on 11/16/2017 1:20:47 PM, SEPARATOR:TAB
+
+EXPEDITION	SITE	HOLE	CORE	CORE_TYPE	SECTION_LABEL	INIT_LENGTH	REV_LENGTH	TOP_DEPTH	BOTTOM_DEPTH	MCD_TOP	ANALYST	IGSN	REMARKS	CC	
+208	1264	C	1	H	1	1.45	1.45	0	1.45	0.1	na	&nbsp;	                                             	no	
+208	1264	C	1	H	2	1.37	1.37	1.45	2.82	1.55	na	&nbsp;	                                             	no	
+208	1264	C	1	H	CC	0.18	0.18	2.82	3	2.92	na	&nbsp;	                                             	yes	
